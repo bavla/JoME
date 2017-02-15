@@ -1,0 +1,37 @@
+\begin{thebibliography}{1}
+
+\bibitem{bib1}
+Hackenschmidt, R., Alber-Laukant, B., and Rieg, F.,
+\newblock Strojniški vestnik -- Journal of Mechanical Engineering {\bf 57}
+  (2010) 531,
+\newblock \mbox{doi}:\url{10.5545/sv-jme.2011.013}.
+
+\bibitem{bib2}
+Groover, M.,
+\newblock {\em Fundamentals of Modern Manufacturing},
+\newblock John Wiley \& Sons, Hoboken, 2007.
+
+\bibitem{bib3}
+Carbone, G. and Ceccarelli, M.,
+\newblock Legged robotic systems,
+\newblock in {\em Cutting Edge Robotics}, edited by Kordić, V., Lazinica, A.,
+  and Merdan, M., pages 553--576, Pro literatur Verlag, Mammendorf, 2005.
+
+\bibitem{bib4}
+Štefanić, N., Martinčević-Mikić, S., and Tošanović, N.,
+\newblock Applied lean system in process industry,
+\newblock in {\em MOTSP Conference Proceedings}, pages 422--427, 2009.
+
+\bibitem{bib5}
+{Indoor Air – Part 6: Determination of Volatile Organic Compounds in Indoor
+  and Chamber Air by Active Sampling on TENAX TA Sorbent, Thermal Desorption
+  and Gas Chromatography using MSD/FID},
+\newblock {ISO/DIS} 16000-6.2:2002, Geneva, 1995,
+\newblock \url{}.
+
+\bibitem{bib6}
+{Rockwell Automation},
+\newblock {\em Arena}, 2009 (accessed on 2009-09-07),
+\newblock \url{http://www.arenasimulation.com}.
+
+\end{thebibliography}
