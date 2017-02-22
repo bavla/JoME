@@ -47,11 +47,12 @@
  \ifnum\count254<10 0\fi\number\count254\,:\,%
  \ifnum\count255<10 0\fi\number\count255}
 
-
 % nohyphenation
 \hyphenpenalty=10000
 \exhyphenpenalty=10000
-
+% no widows and orphans
+\widowpenalty=10000
+\clubpenalty=10000
 
 \newcommand{\Brow}{\fontencoding{T1}\fontfamily{phv}\fontseries{mc}\fontshape{n}\fontsize{8}{9.6pt}\selectfont}
 \DeclareFloatFont{Brow}{\Brow}
@@ -66,12 +67,12 @@
 \DeclareFixedFont{\Hd}{T1}{phv}{bx}{n}{10pt}
 \DeclareFixedFont{\Htit}{T1}{ptm}{b}{n}{16pt}
 \DeclareFixedFont{\Hkey}{T1}{phv}{bc}{n}{9pt}
-\DeclareFixedFont{\Bsec}{T1}{phv}{m}{n}{10pt}
+\DeclareFixedFont{\Bsec}{T1}{phv}{mc}{n}{10pt}
 \DeclareFixedFont{\Bsse}{T1}{phv}{bc}{n}{10pt}
 \DeclareFixedFont{\Bsss}{T1}{phv}{bc}{sl}{10pt}
 %\DeclareFixedFont{\Bcap}{T1}{phv}{mc}{sl}{10pt}
 \newcommand{\Haut}{\fontencoding{T1}\fontfamily{ptm}\fontseries{m}\fontshape{n}\fontsize{10}{12pt}\selectfont}
-\newcommand{\Haff}{\fontencoding{T1}\fontfamily{ptm}\fontseries{m}\fontshape{n}\fontsize{12}{10pt}\selectfont}
+\newcommand{\Haff}{\fontencoding{T1}\fontfamily{ptm}\fontseries{m}\fontshape{n}\fontsize{11}{10pt}\selectfont}
 \newcommand{\Hind}{\fontencoding{T1}\fontfamily{ptm}\fontseries{m}\fontshape{n}\fontsize{8}{8.4pt}\selectfont}
 \newcommand{\Bc}{\fontencoding{T1}\fontfamily{phv}\fontseries{m}\fontshape{n}\fontsize{9}{10.2pt}\selectfont}
 
@@ -81,7 +82,7 @@
 \newenvironment{svHigh}{\strut\hspace*{10mm}\begin{minipage}{150mm}\begin{leftbar}\Hkey{Highlights}\Habs\\ \vspace*{-6mm}
   \begin{itemize}\setlength\itemsep{-4pt}}%
   {\end{itemize}\end{leftbar}\end{minipage}\vspace*{5mm}\par}
-\newenvironment{svHead}{\begin{@twocolumnfalse}\Haut\maketitle\thispagestyle{first}}{\bigskip\end{@twocolumnfalse}}
+\newenvironment{svHead}{\begin{@twocolumnfalse}\Haut\vspace*{-5mm}\maketitle\thispagestyle{first}}{\bigskip\end{@twocolumnfalse}}
 \newcommand{\svKeywords}[1]{\Hkey{Keywords: #1}\bigskip}
 \newcommand{\svSV}{Strojniški vestnik - Journal of Mechanical Engineering vol(yyyy)no, p-p}
 \newcommand{\svDates}[3]{\def\svReview{#1}\def\svRevise{#2}\def\svAccept{#3}}
@@ -93,10 +94,15 @@
 
 \setcounter{section}{-1}
 \renewcommand{\thesection}{\arabic{section}}
+\urlstyle{same}
 \DeclareUrlCommand\email{}
+%\DeclareUrlCommand{\email}{\def\UrlFont{\ttfamily\color{red}}}
 \captionsetup{labelsep=period}
-\DeclareCaptionOptionNoValue*{sf}{\l@addto@macro\captionlabelfont\Hlab}
-\captionsetup{labelfont={sf,bf},textfont={sf,sl}}
+\DeclareCaptionFont{capt}{\fontencoding{T1}\fontfamily{phv}\fontseries{mc}\fontshape{sl}\fontsize{9}{10.8pt}\selectfont}
+\DeclareCaptionFont{capl}{\fontencoding{T1}\fontfamily{phv}\fontseries{bc}\fontshape{n}\fontsize{9}{10.8pt}\selectfont}
+%\captionsetup{labelfont={sf,bf},textfont={sf,sl}}
+\captionsetup{labelfont=capl,textfont=capt}
+\captionsetup[table]{justification=justified,singlelinecheck=false}
 \renewcommand{\figurename}{Fig.}
 \renewcommand{\refname}{}
 
@@ -112,6 +118,12 @@
 
 \newcommand{\svCorr}{*Corr. Author's Address: Name of institution, Address, City, Country, \email{xxx.yyy@xxxxxx.yyy}}
 
+\let\OLDthebibliography\thebibliography
+\renewcommand\thebibliography[1]{
+  \OLDthebibliography{#1}
+  \setlength{\parskip}{0pt}
+  \setlength{\itemsep}{0pt plus 0.3ex}
+}
 \def\bibitem{\Bc\@ifnextchar[\@lbibitem\@bibitem}
 \def\author#1{\gdef\@author{#1}}
 \newcommand{\svMark}[1]{{\Hind\textsuperscript{#1}}}
@@ -119,7 +131,8 @@
 
 \newpagestyle{first}[\Ha]{
 \footrule
-\renewcommand{\makefootrule}{\rule[1.5\baselineskip]{55mm}{1pt}}
+%\renewcommand{\makefootrule}{\rule[1.5\baselineskip]{55mm}{1pt}}
+\renewcommand{\makefootrule}{\rule[0.9\baselineskip]{55mm}{1pt}}
 \sethead{\parbox{80mm}{\svSV\\
 © \svCyear\ Journal of Mechanical Engineering. All rights reserved.\\
 \Hc\svType\  --- \Hb\svDOI}}{}{\parbox{35mm}{\begin{flushright}Received for review: \svReview\\
@@ -135,9 +148,11 @@ Accepted for publication: \svAccept\end{flushright}}}
 
 \renewcommand*{\@cite@ofmt}{\Bsse\hbox}
 \oddsidemargin 5pt \evensidemargin 5pt \marginparwidth 20pt
-\marginparsep 10pt \topmargin -12 true mm \headheight 12pt \headsep 25pt
-\textheight 23 true cm \textwidth 161 true mm
+\marginparsep 10pt \topmargin -12 true mm
+\headheight 12pt \headsep 25pt
+\textheight 223 true mm \textwidth 161 true mm
 \columnsep 8mm \columnseprule 0pt
+\footskip 18pt
 \parskip 1pt
 \setlength\parindent{6.4mm}
 \pagestyle{main}
